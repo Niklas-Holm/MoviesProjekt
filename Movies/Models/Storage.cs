@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
-using Avalonia.Diagnostics.Screenshots;
 
 namespace Movies.Models
 {
-    internal class Storage
+    public class Storage
     {
         // Kompisition til fileHandler
         private readonly FileHandler _fileHandler;
@@ -41,14 +40,14 @@ namespace Movies.Models
                 throw new ArgumentException("Movie duration must be greater than zero.", nameof(movie));
             }
             // Tjekker om filmen har et gyldigt ID
-            if (movie.Id <= 0)
+            if (movie.Id == Guid.Empty)
             {
-                throw new ArgumentException("Movie ID must be greater than zero.", nameof(movie));
+                throw new ArgumentException("Movie ID cannot be empty.", nameof(movie));
             }
             // Tjekker om filmen allerede findes i listen
             if (_movies.Any(m => m.Id == movie.Id))
             {
-                throw new InvalidOperationException($"Movie with ID {movie.Id} already exists.");
+                throw new InvalidOperationException("Movie with the same ID already exists.");
             }
 
             _movies.Add(movie);
