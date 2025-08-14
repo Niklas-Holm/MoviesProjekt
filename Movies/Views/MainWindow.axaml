@@ -18,14 +18,27 @@
     </Design.DataContext>
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" FontSize="50" />
+        <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" FontSize="56" />
         <StackPanel>
             <Label Content="Movie Title" Target="{Binding #TitleBox}"/>
             <TextBox x:Name="TitleBox" Text="{Binding Title}" Width="200"/>
         </StackPanel>
-        <ComboBox
-            ItemsSource="{Binding Genres}"
-            SelectedItem="{Binding Genre, Mode=TwoWay}"
-            Width="200"/>
+        <StackPanel>
+            <Label Content="Movie Duration (Minutes)" Target="{Binding #TitleBox}"/>
+            <NumericUpDown
+                Minimum="1"
+                Maximum="300"
+                Increment="1"
+                Value="{Binding DurationInMin, Mode=TwoWay}"
+                Width="200"/>
+        </StackPanel>
+        <StackPanel>
+            <Label Content="Movie Genre" Target="{Binding #TitleBox}"/>
+            <ComboBox
+                ItemsSource="{Binding Genres}"
+                SelectedItem="{Binding Genre, Mode=TwoWay}"
+                Width="200"/>        
+        </StackPanel>
+        <Button Margin="0 10" Background="LightBlue">Submit</Button>
     </StackPanel>
 </Window>
