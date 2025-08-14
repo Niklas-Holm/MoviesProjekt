@@ -37,7 +37,7 @@
                 SelectedItem="{Binding Genre, Mode=TwoWay}"
                 Width="200"/>        
         </StackPanel>
-        <Button Margin="0 10" Background="LightBlue" HorizontalAlignment="Center">Submit</Button>
+        <Button Margin="0 10" Background="LightBlue" HorizontalAlignment="Center" Command="{Binding SaveMovieCommand}">Submit</Button>
         
         <DataGrid
             ItemsSource="{Binding Movies}"
