@@ -38,7 +38,10 @@ public class MovieViewModel : INotifyPropertyChanged
 
     public MovieViewModel()
     {
-        Movies = new ObservableCollection<Movie>(Storage.GetMovies());
+        var fileHandler = new FileHandler();
+        var storage = new Storage(fileHandler);
+
+        Movies = new ObservableCollection<Movie>(storage.GetMovies());
     }
     
     public event PropertyChangedEventHandler? PropertyChanged;
