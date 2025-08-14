@@ -23,4 +23,6 @@ public class MovieViewModel
             }
         }
     }
+    
+    public int DurationInMin { get; set; }
 }

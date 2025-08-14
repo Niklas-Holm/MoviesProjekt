@@ -4,14 +4,14 @@ namespace Movies.Models;
 
 public enum MovieGenre
 {
+    Other,
     Action,
     Comedy,
     Drama,
     Horror,
     SciFi,
     Romance,
-    Documentary,
-    Other
+    Documentary
 }
 
 public class Movie
