@@ -1,3 +1,5 @@
+using System;
+
 namespace Movies.Models;
 
 public enum MovieGenre
@@ -14,10 +16,11 @@ public enum MovieGenre
 
 public class Movie
 {
+    private static readonly Random _random = new Random();
     public int Id { get; private set; }
     public string Title { get; set; }
     public int DurationInMin { get; set; }
-    public string Genre { get; set; }
+    public MovieGenre Genre { get; set; }
 
     public Movie()
     {
