@@ -9,9 +9,7 @@
         x:Class="Movies.Views.MainWindow"
         x:DataType="vm:MovieViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Movies"
-        Background="white">
-
+        Title="Movies">
 
     <Design.DataContext>
         <vm:MovieViewModel/>
@@ -19,11 +17,11 @@
 
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" FontSize="56" />
-        <StackPanel>
+        <StackPanel HorizontalAlignment="Center">
             <Label Content="Movie Title" Target="{Binding #TitleBox}"/>
             <TextBox x:Name="TitleBox" Text="{Binding Title}" Width="200"/>
         </StackPanel>
-        <StackPanel>
+        <StackPanel HorizontalAlignment="Center">
             <Label Content="Movie Duration (Minutes)" Target="{Binding #TitleBox}"/>
             <NumericUpDown
                 Minimum="1"
@@ -32,13 +30,28 @@
                 Value="{Binding DurationInMin, Mode=TwoWay}"
                 Width="200"/>
         </StackPanel>
-        <StackPanel>
+        <StackPanel HorizontalAlignment="Center">
             <Label Content="Movie Genre" Target="{Binding #TitleBox}"/>
             <ComboBox
                 ItemsSource="{Binding Genres}"
                 SelectedItem="{Binding Genre, Mode=TwoWay}"
                 Width="200"/>        
         </StackPanel>
-        <Button Margin="0 10" Background="LightBlue">Submit</Button>
+        <Button Margin="0 10" Background="LightBlue" HorizontalAlignment="Center">Submit</Button>
+        
+        <DataGrid
+            ItemsSource="{Binding Movies}"
+            AutoGenerateColumns="False"
+            HeadersVisibility="Column"
+            GridLinesVisibility="All"
+            Width="600"
+            Height="300">
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Title" Binding="{Binding Title}" Width="*"/>
+                <DataGridTextColumn Header="Duration (min)" Binding="{Binding DurationInMin}" Width="150"/>
+                <DataGridTextColumn Header="Genre" Binding="{Binding Genre}" Width="150"/>
+            </DataGrid.Columns>
+        </DataGrid>    
     </StackPanel>
 </Window>
